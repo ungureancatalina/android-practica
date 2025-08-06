@@ -43,17 +43,20 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NavigationHost(navController: NavHostController) {
     val context = LocalContext.current
+    var theme_current= "login_white"
 
     // definirea tuturor rutelor posibile si ecranelor asociate
-    NavHost(navController = navController, startDestination = "login") {
+    NavHost(navController = navController, startDestination = theme_current) {
         composable("login_white") {
             LoginScreenWhite(
                 // verificare/hardcodat :))))
                 onLoginClick = { username, password ->
                     val isValid = username == "a" && password == "a"
                     if (isValid) {
-                        val intent = Intent(context, WelcomeActivity::class.java)
-                        intent.putExtra("username", username)
+                        val intent = Intent(context, WelcomeActivity::class.java).apply {
+                            putExtra("username", username)
+                            putExtra("isWhiteTheme", true)
+                        }
                         context.startActivity(intent)
                     } else {
                         Toast.makeText(context, "Wrong credentials!", Toast.LENGTH_SHORT).show()
@@ -82,8 +85,10 @@ fun NavigationHost(navController: NavHostController) {
                 onLoginClick = { username, password ->
                     val isValid = username == "a" && password == "a"
                     if (isValid) {
-                        val intent = Intent(context, WelcomeActivity::class.java)
-                        intent.putExtra("username", username)
+                        val intent = Intent(context, WelcomeActivity::class.java).apply {
+                            putExtra("username", username)
+                            putExtra("isWhiteTheme", false)
+                        }
                         context.startActivity(intent)
                     } else {
                         Toast.makeText(context, "Wrong credentials!", Toast.LENGTH_SHORT).show()

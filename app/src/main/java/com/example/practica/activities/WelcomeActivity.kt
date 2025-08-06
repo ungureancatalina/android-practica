@@ -13,15 +13,18 @@ class WelcomeActivity : ComponentActivity() {
     // se apeleaza prima data cand activitatea este creata
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("WelcomeActivity", "onCreate called")
 
-        // extrage username-ul transmis prin intent
+        // extrage username-ul si theme-ul transmis prin intent
         val username = intent.getStringExtra("username") ?: "User"
+        val isWhiteTheme = intent.getBooleanExtra("isWhiteTheme", false)
 
         setContent {
             PracticaTheme {
-                WelcomeScreen(username)
-                // WelcomeScreenWhite(username)
+                if (isWhiteTheme) {
+                    WelcomeScreenWhite(username)
+                } else {
+                    WelcomeScreen(username)
+                }
             }
         }
     }

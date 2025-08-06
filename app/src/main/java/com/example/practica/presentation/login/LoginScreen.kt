@@ -47,7 +47,7 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
             .background(gradient)
             .padding(horizontal = 24.dp)
     ) {
-        // buton de back (inca nefunctional)
+        // buton inapoi
         IconButton(
             onClick = { /* TODO */ },
             modifier = Modifier

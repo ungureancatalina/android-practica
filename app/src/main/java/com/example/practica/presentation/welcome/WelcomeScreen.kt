@@ -14,6 +14,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.*
+import androidx.compose.foundation.text.*
+import androidx.compose.ui.text.input.*
 
 @Composable
 fun WelcomeScreen(username: String) {
@@ -25,11 +28,17 @@ fun WelcomeScreen(username: String) {
         )
     )
 
+    // variabile pentru input si rezultat
+    var numberText by remember { mutableStateOf("") }
+    var result by remember { mutableStateOf("") }
+
+    // container principal
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(gradient)
     ) {
+        // buton de back (inchide activitatea curenta)
         IconButton(
             onClick = { (context as? Activity)?.finish() },
             modifier = Modifier
@@ -43,14 +52,56 @@ fun WelcomeScreen(username: String) {
             )
         }
 
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+        // continutul ecranului centrat
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 32.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // text de bun venit
             Text(
                 text = "Hello, $username!",
                 fontSize = 26.sp,
                 style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // input pentru numar
+            TextField(
+                value = numberText,
+                onValueChange = { numberText = it },
+                label = { Text("Enter a number") },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                ),
+                singleLine = true
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // buton care verifica paritate
+            Button(onClick = {
+                val num = numberText.toIntOrNull()
+                result = when {
+                    num == null -> "Please enter a valid number."
+                    num % 2 == 0 -> "$num is even."
+                    else -> "$num is odd."
+                }
+            }) {
+                Text("Check")
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // afisare rezultat
+            Text(
+                text = result,
+                fontSize = 20.sp,
                 color = MaterialTheme.colorScheme.onPrimary
             )
         }

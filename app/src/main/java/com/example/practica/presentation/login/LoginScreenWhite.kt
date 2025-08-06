@@ -48,7 +48,7 @@ fun LoginScreenWhite(onLoginClick: (String, String) -> Unit, onNavigateToSignUp2
             .background(colorBackground)
             .padding(horizontal = 24.dp)
     ) {
-        // buton inapoi
+        // buton
         IconButton(
             onClick = { /* TODO */ },
             modifier = Modifier
