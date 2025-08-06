@@ -1,5 +1,6 @@
-package com.example.practica
+package com.example.practica.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -11,20 +12,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.example.practica.presentation.login.LoginScreen
+import com.example.practica.presentation.login.LoginScreenWhite
+import com.example.practica.presentation.signup.SingUpScreen
+import com.example.practica.presentation.signup.SingUpScreenWhite
+import com.example.practica.ui.theme.PracticaTheme
+import com.example.practica.activities.WelcomeActivity
 
 //activitatea principala (punctul de start al aplicatiei)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //aplica tema globala
-            MaterialTheme {
+            // aplica tema globala
+            PracticaTheme {
                 val navController = rememberNavController()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //incarca logica de navigare intre ecrane
+                    // incarca logica de navigare intre ecrane
                     NavigationHost(navController)
                 }
             }
@@ -32,20 +39,25 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//controleaza rutele aplicatiei
+// controleaza rutele aplicatiei
 @Composable
 fun NavigationHost(navController: NavHostController) {
     val context = LocalContext.current
 
-    //definirea tuturor rutelor posibile si ecranelor asociate
+    // definirea tuturor rutelor posibile si ecranelor asociate
     NavHost(navController = navController, startDestination = "login") {
         composable("login_white") {
             LoginScreenWhite(
-                //verificare/hardcodat :))))
+                // verificare/hardcodat :))))
                 onLoginClick = { username, password ->
-                    val isValid = username == "admin" && password == "1234"
-                    val msg = if (isValid) "Login successful!" else "Wrong credentials!"
-                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                    val isValid = username == "a" && password == "a"
+                    if (isValid) {
+                        val intent = Intent(context, WelcomeActivity::class.java)
+                        intent.putExtra("username", username)
+                        context.startActivity(intent)
+                    } else {
+                        Toast.makeText(context, "Wrong credentials!", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 onNavigateToSignUp2 = {
                     navController.navigate("signup_white")
@@ -58,19 +70,24 @@ fun NavigationHost(navController: NavHostController) {
                     Toast.makeText(context, "Account created!", Toast.LENGTH_SHORT).show()
                     navController.popBackStack()
                 },
-                //revine la ecranul anterior
-                onNavigateBackToLogin2  = {
+                // revine la ecranul anterior
+                onNavigateBackToLogin2 = {
                     navController.popBackStack()
                 }
             )
         }
         composable("login") {
             LoginScreen(
-                //verificare/hardcodat :))))
+                // verificare/hardcodat :))))
                 onLoginClick = { username, password ->
-                    val isValid = username == "admin" && password == "1234"
-                    val msg = if (isValid) "Login successful!" else "Wrong credentials!"
-                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                    val isValid = username == "a" && password == "a"
+                    if (isValid) {
+                        val intent = Intent(context, WelcomeActivity::class.java)
+                        intent.putExtra("username", username)
+                        context.startActivity(intent)
+                    } else {
+                        Toast.makeText(context, "Wrong credentials!", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 onNavigateToSignUp = {
                     navController.navigate("signup")
@@ -83,8 +100,8 @@ fun NavigationHost(navController: NavHostController) {
                     Toast.makeText(context, "Account created!", Toast.LENGTH_SHORT).show()
                     navController.popBackStack()
                 },
-                //revine la ecranul anterior
-                onNavigateBackToLogin  = {
+                // revine la ecranul anterior
+                onNavigateBackToLogin = {
                     navController.popBackStack()
                 }
             )

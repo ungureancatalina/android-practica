@@ -1,7 +1,8 @@
-package com.example.practica
+package com.example.practica.presentation.signup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -14,36 +15,42 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.clickable
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.*
+import com.example.practica.R
+import androidx.compose.ui.graphics.*
 
 
 @Composable
-fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -> Unit) {
+fun SingUpScreen(onSignUpClick: (String, String) -> Unit, onNavigateBackToLogin: () -> Unit) {
+    // state pentru email si parola
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    // toggle parola vizibila
     var passwordVisible by remember { mutableStateOf(false) }
 
+    // culori din tema globala
+    val colorPrimary = MaterialTheme.colorScheme.primary
+    val colorSecondary = MaterialTheme.colorScheme.secondary
+    val colorOnPrimary = MaterialTheme.colorScheme.onPrimary
 
     val gradient = Brush.verticalGradient(
-        colors = listOf(Color(0xFF10687C), Color(0xFF0B4D42))
+        colors = listOf(colorPrimary, colorSecondary)
     )
 
+    // layout principal
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(gradient)
             .padding(horizontal = 24.dp)
     ) {
+        // buton inapoi in coltul stanga sus
         IconButton(
-            onClick = { /* TODO */  },
+            onClick = { /* TODO */ },
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(16.dp)
@@ -51,10 +58,11 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "Back",
-                tint = Color.White
+                tint = colorOnPrimary
             )
         }
 
+        // coloana cu campuri si butoane, pozitionata pe centru
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -62,6 +70,7 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // camp pentru email
             OutlinedTextField(
                 value = username,
                 onValueChange = { username = it },
@@ -70,23 +79,33 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(50),
                 colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = Color.White,
-                    focusedBorderColor = Color.White,
-                    focusedLabelColor = Color.White,
-                    unfocusedLabelColor = Color.White,
-                    cursorColor = Color.White,
-                    focusedLeadingIconColor = Color.White,
-                    unfocusedLeadingIconColor = Color.White,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
+                    unfocusedBorderColor = colorOnPrimary,
+                    focusedBorderColor = colorOnPrimary,
+                    focusedLabelColor = colorOnPrimary,
+                    unfocusedLabelColor = colorOnPrimary,
+                    cursorColor = colorOnPrimary,
+                    focusedLeadingIconColor = colorOnPrimary,
+                    unfocusedLeadingIconColor = colorOnPrimary,
+                    focusedTextColor = colorOnPrimary,
+                    unfocusedTextColor = colorOnPrimary
                 )
             )
 
+            // camp pentru parola, cu toggle vizibil/ascuns
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Password") },
-                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null,tint = Color.White,modifier = Modifier.size(20.dp) ) },
+                // iconita parola ascunsa
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = colorOnPrimary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                },
+                // buton care arata/ascunde parola
                 trailingIcon = {
                     val visibilityIcon = if (passwordVisible)
                         painterResource(id = R.drawable.ic_visibility_off)
@@ -97,77 +116,75 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
                         Icon(
                             painter = visibilityIcon,
                             contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                            tint = Color.White,
+                            tint = colorOnPrimary,
                             modifier = Modifier.size(20.dp)
                         )
                     }
                 },
+                // transforma textul in **** daca parolaVisible e false
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(50),
                 colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = Color.White,
-                    focusedBorderColor = Color.White,
-                    focusedLabelColor = Color.White,
-                    unfocusedLabelColor = Color.White,
-                    cursorColor = Color.White,
-                    focusedLeadingIconColor = Color.White,
-                    unfocusedLeadingIconColor = Color.White,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
+                    unfocusedBorderColor = colorOnPrimary,
+                    focusedBorderColor = colorOnPrimary,
+                    focusedLabelColor = colorOnPrimary,
+                    unfocusedLabelColor = colorOnPrimary,
+                    cursorColor = colorOnPrimary,
+                    focusedLeadingIconColor = colorOnPrimary,
+                    unfocusedLeadingIconColor = colorOnPrimary,
+                    focusedTextColor = colorOnPrimary,
+                    unfocusedTextColor = colorOnPrimary
                 )
             )
 
+            // buton SIGNUP
             Button(
-                onClick = { onLoginClick(username, password) },
+                onClick = { onSignUpClick(username, password) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = Color(0xFF10687C)
+                    containerColor = colorOnPrimary,
+                    contentColor = colorPrimary
                 )
             ) {
-                Text("LOGIN", fontWeight = FontWeight.Bold)
+                Text("SIGNUP", fontWeight = FontWeight.Bold)
             }
 
+            // link inapoi la login
             Row(
                 horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxWidth().clickable { onNavigateToSignUp()}
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onNavigateBackToLogin() }
             ) {
-                Text("Don't have an account?", color = Color.White)
+                Text("Already have an account", color = colorOnPrimary)
                 Spacer(modifier = Modifier.width(4.dp))
-                Text("Sign Up", color = Color.White, fontWeight = FontWeight.Bold)
+                Text("Login", color = colorOnPrimary, fontWeight = FontWeight.Bold)
             }
-
-            Text(
-                text = "Forgot Password?",
-                fontSize = 14.sp,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
+            // separator cu OR
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Divider(
-                    color = Color.White,
+                    color = colorOnPrimary,
                     modifier = Modifier
                         .weight(1f)
                         .height(1.dp)
                 )
                 Text(
                     text = "  OR  ",
-                    color = Color.White,
+                    color = colorOnPrimary,
                     fontSize = 14.sp
                 )
                 Divider(
-                    color = Color.White,
+                    color = colorOnPrimary,
                     modifier = Modifier
                         .weight(1f)
                         .height(1.dp)
@@ -175,27 +192,31 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
             }
 
             Text(
-                text = "Login with Social Networks",
-                color = Color.White,
+                text = "Sign up with Social Networks",
+                color = colorOnPrimary,
                 fontSize = 14.sp,
                 modifier = Modifier.padding(top = 16.dp, bottom = 12.dp)
             )
 
+            // iconite pentru login social
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
             ) {
-                IconButton(onClick = {  }, modifier = Modifier
-                    .size(48.dp)
-                    .border(
-                        width = 2.dp,
-                        color = Color.White,
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Color.White)) {
+                IconButton(
+                    onClick = { },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .border(
+                            width = 2.dp,
+                            color = colorOnPrimary,
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(colorOnPrimary)
+                ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_facebook),
                         contentDescription = "Facebook",
@@ -203,15 +224,18 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
                         modifier = Modifier.size(24.dp)
                     )
                 }
-                IconButton(onClick = {  }, modifier = Modifier
-                    .size(48.dp)
-                    .border(
-                        width = 2.dp,
-                        color = Color.White,
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Color.White)) {
+                IconButton(
+                    onClick = { },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .border(
+                            width = 2.dp,
+                            color = colorOnPrimary,
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(colorOnPrimary)
+                ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_google),
                         contentDescription = "Google",
@@ -219,15 +243,18 @@ fun LoginScreen(onLoginClick: (String, String) -> Unit, onNavigateToSignUp: () -
                         modifier = Modifier.size(24.dp)
                     )
                 }
-                IconButton(onClick = { }, modifier = Modifier
-                    .size(48.dp)
-                    .border(
-                        width = 2.dp,
-                        color = Color.White,
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Color.White)) {
+                IconButton(
+                    onClick = { },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .border(
+                            width = 2.dp,
+                            color = colorOnPrimary,
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(colorOnPrimary)
+                ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_twitter),
                         contentDescription = "Twitter",
