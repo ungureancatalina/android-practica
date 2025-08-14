@@ -1,0 +1,35 @@
+<resources>
+
+    <style name="Theme.MyApp.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/visiniu</item>
+        <item name="colorOnPrimary">@color/light_accent</item>
+
+        <item name="colorSecondary">@color/visiniu</item>
+        <item name="colorOnSecondary">@color/text_on_visiniu_pink</item>
+
+        <item name="colorTertiary">@color/light_accent</item>
+        <item name="colorOnTertiary">@color/light_highlight</item>
+
+        <item name="android:colorBackground">@color/pink_light_bg</item>
+        <item name="colorSurface">@color/visiniu</item>
+        <item name="colorOnSurface">@color/text_on_visiniu_pink</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.MyApp.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/pink_light</item>
+        <item name="colorOnPrimary">@color/dark_accent</item>
+
+        <item name="colorSecondary">@color/pink_light</item>
+        <item name="colorOnSecondary">@color/text_on_pink_visiniu</item>
+
+        <item name="colorTertiary">@color/dark_accent</item>
+        <item name="colorOnTertiary">@color/dark_highlight</item>
+
+        <item name="android:colorBackground">@color/dark_bg_visiniu</item>
+        <item name="colorSurface">@color/pink_light</item>
+        <item name="colorOnSurface">@color/text_on_pink_visiniu</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

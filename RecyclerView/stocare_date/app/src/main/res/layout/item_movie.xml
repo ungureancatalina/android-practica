@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="6dp"
+    app:strokeColor="?attr/colorSecondary"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="?attr/colorOnTertiary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="The Shawshank Redemption" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/tvGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textColor="?attr/colorOnSecondary"
+                android:alpha="0.9"
+                tools:text="Drama" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="•"
+                android:textColor="?attr/colorOnSecondary"
+                android:alpha="0.9" />
+
+            <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textColor="?attr/colorOnSecondary"
+                android:alpha="0.9"
+                tools:text="1994" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSecondary"
+            tools:text="★ 9.3" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

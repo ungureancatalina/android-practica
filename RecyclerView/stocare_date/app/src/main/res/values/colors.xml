@@ -1,0 +1,19 @@
+<resources>
+    <!-- Light -->
+    <color name="pink_light_bg">#F4DFE2</color>
+    <color name="visiniu">#7B1E3A</color>
+    <color name="text_on_visiniu_pink">#3A0A11</color>
+    <color name="light_accent">#FFC1CC</color>
+    <color name="light_highlight">#FFF0F5</color>
+
+    <!-- Dark -->
+    <color name="dark_bg_visiniu">#61252C</color>
+    <color name="pink_light">#FFC1CC</color>
+    <color name="text_on_pink_visiniu">#F4DFE2</color>
+    <color name="dark_accent">#7B1E3A</color>
+    <color name="dark_highlight">#3A0A11</color>
+
+    <!-- Common -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
