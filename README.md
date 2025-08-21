@@ -46,3 +46,16 @@ This repository contains separate Android applications, each as an individual pr
 - **Data Storage**:
   - Same SharedPreferences features as in RecyclerView/, but implemented in Compose.
     
+### Weather tab
+- Added BottomNavigation with a new tab dedicated to weather.
+- Screen displays the weekly forecast in a clear and structured UI.
+- Data is fetched from the Open-Meteo API using Retrofit.
+- API results are stored in a Room database (dedicated table).
+- UI reads exclusively from the database for consistency.
+- Implemented a Refresh button to:
+  - Request fresh data from the API
+  - Update the Room table
+  - Automatically reload the UI with the new forecast
+- Uses Repository + ViewModel + coroutines/Flow to manage and observe data.
+
+  
