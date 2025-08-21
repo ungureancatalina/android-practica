@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MoviesCompose</string>
+    <string name="weather_title">Vreme (7 zile)</string>
+    <string name="refresh">Refresh</string>
+    <string name="error_format">Eroare: %1$s</string>
+    <string name="temp_min_max_c">Min: %.1f°C   Max: %.1f°C</string>
+
+</resources>
