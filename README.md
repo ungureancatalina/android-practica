@@ -8,13 +8,13 @@ This repository contains separate Android applications, each as an individual pr
 
 ### first_app
 - Install & configure Android Studio.
-- Understand project structure (`manifests/`, `java/`, `res/`).
+- Understand project structure (manifests/, java/, res/).
 - Create basic layouts using ConstraintLayout & LinearLayout.
 - Work with UI elements: TextView, EditText, Button, ImageView.
-- Handle events with `setOnClickListener`.
+- Handle events with setOnClickListener.
 - Pass data between activities using Intents.
-- Manage activity lifecycle methods (`onCreate`, `onStart`, `onResume`, etc.).
-- Save UI state using `onSaveInstanceState`.
+- Manage activity lifecycle methods (onCreate, onStart, onResume, etc.).
+- Save UI state using onSaveInstanceState.
 - Build small functional apps:  
   - Login/sign-up with welcome page  
   - BMI calculator  
@@ -41,7 +41,7 @@ This repository contains separate Android applications, each as an individual pr
 ### RecyclerViewCompose
 - Same functionality as RecyclerView/ but implemented with Jetpack Compose.
 - Using LazyColumn to display lists.
-- `@Composable` item rows with `Modifier.clickable` for click handling.
+- @Composable item rows with Modifier.clickable for click handling.
 - Showing Toast/Snackbar on item click.
 - **Data Storage**:
   - Same SharedPreferences features as in RecyclerView/, but implemented in Compose.
