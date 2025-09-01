@@ -58,7 +58,7 @@ This repository contains separate Android applications, each as an individual pr
   - Automatically reload the UI with the new forecast
 - Uses Repository + ViewModel + coroutines/Flow to manage and observe data.
 
-###ChatBot
+### ChatBot
 - Collaborative GitHub project.
 - ChatGPT-style app using MediaPipe GenAI LLM Inference (on-device model).
 - Two screens:
