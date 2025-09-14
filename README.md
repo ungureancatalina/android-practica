@@ -1,10 +1,33 @@
-# Android Learning
+## Android Learning
 
-This repository contains separate Android applications, each as an individual project.  
+This is a collection of standalone Android apps demonstrating various features, UI patterns, and Kotlin/Jetpack Compose implementations.
 
 ---
 
-## Structure
+
+## Technologies Used
+
+| Tool / Language               | Purpose                                                                 |
+|-------------------------------|-------------------------------------------------------------------------|
+| Kotlin                        | Primary programming language for all Android apps                       |
+| Android Studio                | IDE for building and testing Android apps                               |
+| XML                           | Designing UI layouts in traditional Android apps                        |
+| Jetpack Compose               | Modern declarative UI framework for Android                             |
+| Intents                       | Navigation and passing data between activities                          |
+| Activity Lifecycle Methods    | Managing app state across activity lifecycle (onCreate, onStart, etc.)  |
+| SharedPreferences             | Simple key-value local storage (e.g., username, theme preference)       |
+| Room Database                 | Local database for structured storage (e.g., Chat, Messages, Weather)   |
+| Retrofit                      | HTTP client for fetching API data (WeatherTab)                          |
+| MVVM Architecture             | Organizing code into Model-View-ViewModel structure                     |
+| Coroutines & Flow             | Asynchronous programming and reactive data handling                     |
+| MediaPipe GenAI LLM           | On-device AI model for chatbot responses                                |
+| Git & GitHub                  | Version control and collaborative development                           |
+| API Integration               | Fetching weather data from Open-Meteo                                   |
+
+
+---
+
+## Features
 
 ### first_app
 - Install & configure Android Studio.
@@ -68,3 +91,18 @@ This repository contains separate Android applications, each as an individual pr
 - MVVM + Repository architecture with coroutines/Flow.
 - UI(Compose).
 - Focus on: saving entities, displaying lists, connecting DB ↔ UI, handling message send + LLM reply.
+
+---
+
+## This is how the apps look like:
+
+
+<img width="375" height="846" alt="Screenshot 2025-09-14 104019" src="https://github.com/user-attachments/assets/4e501769-3d39-479e-8e67-fab484ed4a57" />
+<img width="366" height="840" alt="Screenshot 2025-09-14 104144" src="https://github.com/user-attachments/assets/72af296b-0007-41d4-bed7-f3af5a54432b" />
+<img width="379" height="849" alt="Screenshot 2025-09-14 104205" src="https://github.com/user-attachments/assets/fbdc1854-e55b-49b5-960a-5c2afb4d1f4a" />
+<img width="371" height="829" alt="Screenshot 2025-09-14 104217" src="https://github.com/user-attachments/assets/7b41a44e-8ebe-446f-abfb-6e2c9b1ef6a9" />
+<img width="372" height="839" alt="Screenshot 2025-09-14 104223" src="https://github.com/user-attachments/assets/2df562cd-d7b0-4335-8053-59eb9b441c89" />
+<img width="361" height="821" alt="Screenshot 2025-09-14 103706" src="https://github.com/user-attachments/assets/3d645454-3579-42bc-8490-f46fa5eebc6e" />
+<img width="360" height="813" alt="Screenshot 2025-09-14 103717" src="https://github.com/user-attachments/assets/00ca5e90-3852-42f1-8ff1-cd04bc218ea1" />
+<img width="367" height="829" alt="Screenshot 2025-09-14 103912" src="https://github.com/user-attachments/assets/99be46d2-60bc-4b20-a966-d12413e66dff" />
+
